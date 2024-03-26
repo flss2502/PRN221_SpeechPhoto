@@ -10,12 +10,18 @@
     <Compile Update="CapturedPhotoWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="GGMap.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="CapturedPhotoWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="GGMap.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

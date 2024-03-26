@@ -1,6 +1,7 @@
 ﻿<Window x:Class="SpeechPhoto_WPF.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
         Title="Speech Photo App" Height="820" Width="1570">
     <Grid>
         <Grid.RowDefinitions>
@@ -8,7 +9,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" MinHeight="35.96" />
         </Grid.RowDefinitions>
-
+        
         <!-- Header -->
         <StackPanel Grid.Row="0" Margin="10,10,10,32">
             <TextBlock Text="Speech Photo App" FontSize="18" FontWeight="Bold" HorizontalAlignment="Center" />

@@ -6,6 +6,7 @@ using AForge.Video.DirectShow;
 using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
+using System.Windows.Input;
 
 namespace SpeechPhoto_WPF
 {
