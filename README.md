@@ -1,1 +1,0 @@
-# PRN221_SpeechPhoto
