@@ -10,17 +10,25 @@ using System.Windows.Input;
 using System.Collections.ObjectModel;
 using WinForms = System.Windows.Forms;
 using Path = System.IO.Path;
+using System.Net.Http;
+using System.Net;
+using Newtonsoft.Json.Linq;
+using Newtonsoft.Json;
+using Weather;
 
 namespace SpeechPhoto_WPF
 {
     public partial class MainWindow : Window
     {
+
+
         private SpeechRecognizer recognizer;
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
         private Bitmap capturedBitmap;
         private ObservableCollection<ImageViewModel> imageList;
         private string selectedFolderPath;
+
 
         public MainWindow()
         {
@@ -29,6 +37,7 @@ namespace SpeechPhoto_WPF
             InitializeWebcam();
             imageList = new ObservableCollection<ImageViewModel>();
             imageListView.ItemsSource = imageList;
+            GetWeatherApi();
         }
 
         private async Task InitializeSpeechRecognizerAsync()
@@ -130,9 +139,8 @@ namespace SpeechPhoto_WPF
 
             if (videoDevices.Count > 0)
             {
-                videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
+                videoSource = new VideoCaptureDevice(videoDevices[1].MonikerString);
                 videoSource.NewFrame += VideoSource_NewFrame;
-
                 videoSource.Start();
             }
             else
@@ -147,6 +155,7 @@ namespace SpeechPhoto_WPF
             BitmapImage bitmapImage = ConvertToBitmapImage(capturedBitmap);
             Dispatcher.Invoke(() => webcamImage.Source = bitmapImage);
         }
+
 
         private BitmapImage ConvertToBitmapImage(Bitmap bitmap)
         {
@@ -278,5 +287,82 @@ namespace SpeechPhoto_WPF
                 System.Windows.MessageBox.Show("Please select a folder before viewing images.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void location_Click(object sender, RoutedEventArgs e)
+        {
+            GGMap ggMapWindow = new GGMap();
+            ggMapWindow.Show();
+        }
+
+        private async Task<string> GetLocationFromApiAsync()
+        {
+            string apiKey = "b7774cc1e6cc457daa4bf1d296f5adcd";
+            string apiUrl = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + apiKey + "&ip_address=113.23.109.239";
+
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    var response = await client.GetAsync(apiUrl);
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = await response.Content.ReadAsStringAsync();
+                        dynamic apiData = JObject.Parse(jsonString);
+                        locationTextBlock.Text = $"{apiData.region}, {apiData.country}, {apiData.continent}";
+                        string location = $"{apiData.region}";
+                        return location;
+                    }
+                    else
+                    {
+                        return "Failed to retrieve location from API.";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return "Error: " + ex.Message;
+            }
+        }
+
+ 
+
+        private string APIKey = "de654bfa63689994c449fc63b93ef46a";
+
+        private async void GetWeatherApi()
+        {
+            string location = await GetLocationFromApiAsync();
+
+            using (WebClient web = new WebClient())
+            {
+
+                string url = $"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={APIKey}";
+                var json = web.DownloadString(url);
+                WeatherInfo.root info = JsonConvert.DeserializeObject<WeatherInfo.root>(json); weatherTextBlock.Source = new BitmapImage(new Uri($"https://openweathermap.org/img/w/{info.weather[0].icon}.png"));
+                conditionTextBlock.Text = info.weather[0].main;
+                double tempKelvin = info.main.temp;
+                double tempCelsius = tempKelvin - 273.15;
+                double roundedTempCelsius = Math.Round(tempCelsius, 1); 
+                temperatureTextBlock.Text = $"{roundedTempCelsius} °C";
+
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            GGMap gGMap = new GGMap();
+            gGMap.Show();
+        }
+
+        private void Button_Click2(object sender, RoutedEventArgs e)
+        {
+            Weather weather = new Weather();
+            weather.Show();
+        }
+        private void Button_Click3(object sender, RoutedEventArgs e)
+        {
+            WinForms.MessageBox.Show("Test");
+        }
+
     }
+
 }

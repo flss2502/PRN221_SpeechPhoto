@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SpeechPhoto_WPF")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+405e94ecd1ec335dc35f7b841d86a6b5ad1578ea")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f4fb7905fc365f7a604554a0d233ee0ac881106")]
 [assembly: System.Reflection.AssemblyProductAttribute("SpeechPhoto_WPF")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SpeechPhoto_WPF")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

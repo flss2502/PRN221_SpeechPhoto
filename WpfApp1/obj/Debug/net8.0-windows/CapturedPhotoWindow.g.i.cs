@@ -61,7 +61,7 @@ namespace SpeechPhoto_WPF {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SpeechPhoto_WPF;V1.0.0.0;component/capturedphotowindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SpeechPhoto_WPF;component/capturedphotowindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\CapturedPhotoWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

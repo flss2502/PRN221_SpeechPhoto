@@ -1,26 +1,63 @@
 ﻿<Window x:Class="SpeechPhoto_WPF.GGMap"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SpeechPhoto_WPF"
-                xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
-        mc:Ignorable="d"
-        Title="GGMap" Height="450" Width="800">
+        xmlns:gmaps="clr-namespace:GMap.NET.WindowsPresentation;assembly=GMap.NET.WindowsPresentation"
+        Title="GGMap" Height="450" Width="800"
+        Background="#FFEF9EC7">
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <Border x:Name="mapContainer" Width="780" Height="333" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
+
+        <Border x:Name="mapContainer" Grid.Row="0" Grid.Column="0" Width="780" Height="333" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0">
             <gmaps:GMapControl x:Name="mapView" Loaded="mapView_Loaded" Margin="0,10,0,0"/>
         </Border>
 
-        <StackPanel VerticalAlignment="Top" Margin="0,366,0,0">
-            <TextBox x:Name="latitudeTextBox" Margin="0,0,0,5" Text="Latitude" />
-            <TextBox x:Name="longitudeTextBox" Margin="0,0,0,5" Text="Longitude" />
-            <Button Content="Move" Click="MoveButton_Click" />
+        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="10">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="0,0,0,5" />
+                    <Setter Property="MinWidth" Value="150" />
+                    <Setter Property="Padding" Value="5" />
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="0,0,0,5" />
+                    <Setter Property="Background" >
+                        <Setter.Value>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="Black"/>
+                                <GradientStop Color="#FFEE46EF" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <!-- Thay đổi màu nền của nút -->
+                    <Setter Property="Foreground" Value="White" />
+                    <!-- Thay đổi màu chữ của nút -->
+                    <Setter Property="Padding" Value="10" />
+                    <!-- Tăng kích thước lề của nút -->
+
+                </Style>
+            </StackPanel.Resources>
+
+            <StackPanel Margin="0,0,0,5">
+                <Label Content="Latitude" />
+                <TextBox x:Name="latitudeTextBox" />
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,5">
+                <Label Content="Longitude" />
+                <TextBox x:Name="longitudeTextBox" />
+            </StackPanel>
+
+            <Button Content="Move" Click="MoveButton_Click" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  />
             <Button Content="Move to API Location" Click="MoveToAPILocation_Click" />
         </StackPanel>
+
     </Grid>
 </Window>
