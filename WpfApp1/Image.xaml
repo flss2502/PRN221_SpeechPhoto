@@ -1,0 +1,70 @@
+﻿<Window x:Class="Prn221_project_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Prn221_project_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="904" Width="1105">
+    <Window.Resources>
+        <!-- Style for buttons -->
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#2C3E11"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,0,0,-6">
+        <!-- File Button -->
+        <Button Content="Select File" Click="Button_Click" Style="{StaticResource ButtonStyle}" Margin="34,66,0,0"/>
+        <!-- Create Folder Button -->
+        <Button Content="Create Folder" Click="CreateFolderButton_Click" Style="{StaticResource ButtonStyle}" Margin="185,66,0,0"/>
+        <!-- Delete Folder Button -->
+        <Button Content="Delete Folder" Click="DeleteFolderButton_Click" Style="{StaticResource ButtonStyle}" Margin="336,66,0,0"/>
+        <!-- Rename Folder Button -->
+        <Button Content="Rename Folder" Click="RenameFolderButton_Click" Style="{StaticResource ButtonStyle}" Margin="487,66,0,0"/>
+
+        <Button Content="Upload Image" Click="UploadImageButton_Click" Style="{StaticResource ButtonStyle}" Margin="750,66,0,0"/>
+
+        <!-- Select 10 Latest Images Button -->
+        <Button Content="Select 30 Latest Images" Click="Select10LatestImages_Click" Style="{StaticResource ButtonStyle}" Margin="245,467,0,0"/>
+
+
+        <Image x:Name="SelectedImage" Margin="598,127,0,0" VerticalAlignment="Top" Height="229" HorizontalAlignment="Left" Width="337"/>
+
+        <!-- Label and TextBox -->
+        <Label Content="Folder" HorizontalAlignment="Left" Margin="65,30,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.376,-0.322" Height="31" Width="57"/>
+        <TextBox x:Name="FolderPathTextBox" HorizontalAlignment="Left" Margin="122,37,0,0" VerticalAlignment="Top" Width="400" IsReadOnly="True"/>
+
+        <!-- ListView -->
+        <ListView x:Name="FolderContentsListView" HorizontalAlignment="Left" Height="300" Margin="70,127,0,0" VerticalAlignment="Top" Width="505" MouseDoubleClick="FolderContentsListView_MouseDoubleClick">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Type" Width="100" DisplayMemberBinding="{Binding Type}"/>
+                    <GridViewColumn Header="Name" Width="200" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Path" Width="200" DisplayMemberBinding="{Binding Path}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListBox x:Name="LatestImagesListBox" HorizontalAlignment="Left" Height="150" Margin="52,538,0,0" VerticalAlignment="Top" Width="506" MouseDoubleClick="LatestImagesListBox_MouseDoubleClick"/>
+        <Image x:Name="SelectedImageCloud" Margin="598,509,0,0" VerticalAlignment="Top" Height="229" HorizontalAlignment="Left" Width="337"/>
+    </Grid>
+</Window>

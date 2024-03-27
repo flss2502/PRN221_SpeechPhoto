@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Unity\\ProjectPRN\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj": {}
+    "D:\\Ky_7\\PRN221\\Git_assignment\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj": {}
   },
   "projects": {
-    "D:\\Unity\\ProjectPRN\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj": {
+    "D:\\Ky_7\\PRN221\\Git_assignment\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Unity\\ProjectPRN\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj",
+        "projectUniqueName": "D:\\Ky_7\\PRN221\\Git_assignment\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj",
         "projectName": "SpeechPhoto_WPF",
-        "projectPath": "D:\\Unity\\ProjectPRN\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj",
-        "packagesPath": "C:\\Users\\DucAnh\\.nuget\\packages\\",
-        "outputPath": "D:\\Unity\\ProjectPRN\\PRN221_SpeechPhoto\\WpfApp1\\obj\\",
+        "projectPath": "D:\\Ky_7\\PRN221\\Git_assignment\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj",
+        "packagesPath": "C:\\Users\\ASUS\\.nuget\\packages\\",
+        "outputPath": "D:\\Ky_7\\PRN221\\Git_assignment\\PRN221_SpeechPhoto\\WpfApp1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DucAnh\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ASUS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -34,68 +34,15 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
-            "AForge.Video": {
+            "CloudinaryDotNet": {
               "target": "Package",
-              "version": "[2.2.5, )"
-            },
-            "AForge.Video.DirectShow": {
-              "target": "Package",
-              "version": "[2.2.5, )"
-            },
-            "GMap.NET.Core": {
-              "target": "Package",
-              "version": "[2.1.7, )"
-            },
-            "GMap.NET.WinPresentation": {
-              "target": "Package",
-              "version": "[2.1.7, )"
-            },
-            "Microsoft.CognitiveServices.Speech": {
-              "target": "Package",
-              "version": "[1.36.0, )"
-            },
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[13.0.3, )"
-            },
-            "Remote.Linq.Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[7.1.0, )"
-            },
-            "RestSharp": {
-              "target": "Package",
-              "version": "[110.2.0, )"
-            },
-            "System.Drawing.Common": {
-              "target": "Package",
-              "version": "[8.0.3, )"
-            },
-            "System.Net.Http": {
-              "target": "Package",
-              "version": "[4.3.4, )"
-            },
-            "System.Runtime.WindowsRuntime": {
-              "target": "Package",
-              "version": "[4.7.0, )"
-            },
-            "System.Speech": {
-              "target": "Package",
-              "version": "[8.0.0, )"
-            },
-            "System.Windows.Extensions": {
-              "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[1.26.2, )"
             }
           },
           "imports": [
@@ -109,15 +56,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            },
-            "Microsoft.WindowsDesktop.App.WPF": {
-              "privateAssets": "none"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

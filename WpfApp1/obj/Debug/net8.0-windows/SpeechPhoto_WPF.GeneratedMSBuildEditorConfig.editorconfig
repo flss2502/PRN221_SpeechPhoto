@@ -8,6 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = SpeechPhoto_WPF
-build_property.ProjectDir = D:\Unity\ProjectPRN\PRN221_SpeechPhoto\WpfApp1\
-build_property.EnableComHosting = 
-build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.ProjectDir = D:\Ky_7\PRN221\Git_assignment\PRN221_SpeechPhoto\WpfApp1\
