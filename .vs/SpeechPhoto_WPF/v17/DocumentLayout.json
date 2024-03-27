@@ -3,40 +3,40 @@
   "WorkspaceRootPath": "F:\\PRN221\\PRN221_SpeechPhoto\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|f:\\prn221\\prn221_speechphoto\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|f:\\prn221\\prn221_speechphoto\\wpfapp1\\services\\weatherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\services\\weatherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|f:\\prn221\\prn221_speechphoto\\wpfapp1\\capturedphotowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\capturedphotowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|f:\\prn221\\prn221_speechphoto\\wpfapp1\\imageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\imageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|f:\\prn221\\prn221_speechphoto\\wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\speechphoto_wpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\speechphoto_wpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\capturedphotowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\capturedphotowindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|f:\\prn221\\prn221_speechphoto\\wpfapp1\\capturedphotowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\capturedphotowindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|f:\\prn221\\prn221_speechphoto\\wpfapp1\\ggmap.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\ggmap.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\ggmap.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\speechphoto_wpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\speechphoto_wpf.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\imageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\imageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|f:\\prn221\\prn221_speechphoto\\wpfapp1\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|solutionrelative:wpfapp1\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2F86BD9B-F887-46E0-942E-30A935E94EE8}|WpfApp1\\SpeechPhoto_WPF.csproj|F:\\PRN221\\PRN221_SpeechPhoto\\wpfapp1\\ggmap.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -50,7 +50,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 331,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -62,59 +62,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ImageViewModel.cs",
-              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\ImageViewModel.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\ImageViewModel.cs",
-              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\ImageViewModel.cs",
-              "RelativeToolTip": "WpfApp1\\ImageViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T13:22:30.391Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CapturedPhotoWindow.xaml.cs",
-              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\CapturedPhotoWindow.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\CapturedPhotoWindow.xaml.cs",
-              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\CapturedPhotoWindow.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\CapturedPhotoWindow.xaml.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAkwEQAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T12:59:00.744Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml.cs",
               "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\MainWindow.xaml.cs",
               "RelativeToolTip": "WpfApp1\\MainWindow.xaml.cs",
-              "ViewState": "AQIAAMQAAAAAAAAAAAAAANoAAAAPAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAUwBoAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-26T11:46:47.689Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "WeatherService.cs",
-              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\Services\\WeatherService.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\Services\\WeatherService.cs",
-              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\Services\\WeatherService.cs",
-              "RelativeToolTip": "WpfApp1\\Services\\WeatherService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 4,
+              "Title": "CapturedPhotoWindow.xaml.cs",
+              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\CapturedPhotoWindow.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\CapturedPhotoWindow.xaml.cs",
+              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\CapturedPhotoWindow.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\CapturedPhotoWindow.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEYAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-27T12:58:32.788Z",
+              "WhenOpened": "2024-03-27T12:59:00.744Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
+              "Title": "SpeechPhoto_WPF.csproj",
+              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj",
+              "RelativeDocumentMoniker": "WpfApp1\\SpeechPhoto_WPF.csproj",
+              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj",
+              "RelativeToolTip": "WpfApp1\\SpeechPhoto_WPF.csproj",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-03-26T11:56:03.231Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GGMap.xaml.cs",
+              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\GGMap.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\GGMap.xaml.cs",
+              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\GGMap.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\GGMap.xaml.cs",
+              "ViewState": "AQIAADQAAAAAAAAAAAAtwEUAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-26T11:52:13.987Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\MainWindow.xaml",
@@ -126,7 +126,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "App.xaml",
               "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\App.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\App.xaml",
@@ -138,40 +138,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "CapturedPhotoWindow.xaml",
               "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\CapturedPhotoWindow.xaml",
               "RelativeDocumentMoniker": "WpfApp1\\CapturedPhotoWindow.xaml",
               "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\CapturedPhotoWindow.xaml",
               "RelativeToolTip": "WpfApp1\\CapturedPhotoWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-03-27T12:58:41.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "SpeechPhoto_WPF.csproj",
-              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj",
-              "RelativeDocumentMoniker": "WpfApp1\\SpeechPhoto_WPF.csproj",
-              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\SpeechPhoto_WPF.csproj",
-              "RelativeToolTip": "WpfApp1\\SpeechPhoto_WPF.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-03-26T11:56:03.231Z",
+              "WhenOpened": "2024-03-27T15:44:47Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "GGMap.xaml.cs",
-              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\GGMap.xaml.cs",
-              "RelativeDocumentMoniker": "WpfApp1\\GGMap.xaml.cs",
-              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\GGMap.xaml.cs",
-              "RelativeToolTip": "WpfApp1\\GGMap.xaml.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAWwBgAAAAJAAAA",
+              "Title": "ImageViewModel.cs",
+              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\ImageViewModel.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\ImageViewModel.cs",
+              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\ImageViewModel.cs",
+              "RelativeToolTip": "WpfApp1\\ImageViewModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-26T11:52:13.987Z",
+              "WhenOpened": "2024-03-27T13:22:30.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\App.xaml.cs",
+              "RelativeDocumentMoniker": "WpfApp1\\App.xaml.cs",
+              "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\App.xaml.cs",
+              "RelativeToolTip": "WpfApp1\\App.xaml.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAkAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-03-27T15:21:57.018Z",
               "EditorCaption": ""
             },
             {
@@ -183,8 +183,7 @@
               "ToolTip": "F:\\PRN221\\PRN221_SpeechPhoto\\WpfApp1\\GGMap.xaml",
               "RelativeToolTip": "WpfApp1\\GGMap.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-03-26T11:51:01.68Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-26T11:51:01.68Z"
             }
           ]
         }

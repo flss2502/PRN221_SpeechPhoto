@@ -50,7 +50,7 @@ namespace SpeechPhoto_WPF
             }
             else
             {
-                MessageBox.Show("Invalid Latitude or Longitude!");
+                System.Windows.MessageBox.Show("Invalid Latitude or Longitude!");
             }
         }
 
@@ -83,7 +83,7 @@ namespace SpeechPhoto_WPF
                         BitmapImage flagImage = new BitmapImage(new Uri("https://res.cloudinary.com/dadxpzage/image/upload/v1711451547/point_qstesw.jpg"));
 
                         // Đặt hình ảnh cho GMapMarker
-                        flagMarker.Shape = new Image
+                        flagMarker.Shape = new System.Windows.Controls.Image
                         {
                             Source = flagImage,
                             Width = 30,
@@ -95,13 +95,13 @@ namespace SpeechPhoto_WPF
                     }
                     else
                     {
-                        MessageBox.Show("Failed to retrieve location from API.");
+                        System.Windows.MessageBox.Show("Failed to retrieve location from API.");
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message);
+                System.Windows.MessageBox.Show("Error: " + ex.Message);
             }
         }
     }

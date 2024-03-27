@@ -7,8 +7,11 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Security.Principal;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+using WinForms = System.Windows.Forms;
+using System.IO.Pipes;
+using System.Diagnostics;
+using System.Linq;
 
 namespace SpeechPhoto_WPF
 {
@@ -17,7 +20,6 @@ namespace SpeechPhoto_WPF
         private string imagePath;
         private ObservableCollection<ImageViewModel> imageList;
         private string selectedFolderPath;
-        private ListView imageListView;
 
         public CapturedPhotoWindow(ObservableCollection<ImageViewModel> imageList, string selectedFolderPath, string imagePath)
         {
@@ -60,13 +62,13 @@ namespace SpeechPhoto_WPF
             {
                 string filePath = saveFileDialog.FileName;
                 SaveCapturedBitmapToFile(filePath);
-                MessageBox.Show($"Photo saved to {filePath}");
+                System.Windows.MessageBox.Show($"Photo saved to {filePath}");
             }
         }
 
         private void SaveCapturedBitmapToFile(string filePath)
         {
-
+            
         }
 
         private void UploadButton_Click(object sender, RoutedEventArgs e)

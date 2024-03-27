@@ -24,6 +24,7 @@ namespace SpeechPhoto_WPF
 
         public MainWindow()
         {
+            InitializeComponent();
             InitializeSpeechRecognizerAsync();
             InitializeWebcam();
             imageList = new ObservableCollection<ImageViewModel>();
@@ -42,7 +43,7 @@ namespace SpeechPhoto_WPF
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 
@@ -65,7 +66,7 @@ namespace SpeechPhoto_WPF
         {
             if (videoSource == null || !videoSource.IsRunning)
             {
-                MessageBox.Show("Webcam is not available.");
+                System.Windows.MessageBox.Show("Webcam is not available.");
                 return;
             }
 
@@ -136,7 +137,7 @@ namespace SpeechPhoto_WPF
             }
             else
             {
-                MessageBox.Show("No video devices found.");
+                System.Windows.MessageBox.Show("No video devices found.");
             }
         }
 
@@ -207,16 +208,16 @@ namespace SpeechPhoto_WPF
 
         private void btnBrowseFile_Click(object sender, RoutedEventArgs e)
         {
-            //WinForms.FolderBrowserDialog dialog = new WinForms.FolderBrowserDialog();
-            //dialog.InitialDirectory = "";
-            //WinForms.DialogResult result = dialog.ShowDialog();
+            WinForms.FolderBrowserDialog dialog = new WinForms.FolderBrowserDialog();
+            dialog.InitialDirectory = "";
+            WinForms.DialogResult result = dialog.ShowDialog();
 
-            //if (result == WinForms.DialogResult.OK)
-            //{
-            //    selectedFolderPath = dialog.SelectedPath;
-            //    txbFolderName.Text = selectedFolderPath;
-            //    LoadFolder(selectedFolderPath);
-            //}
+            if (dialog != null && result == WinForms.DialogResult.OK)
+            {
+                selectedFolderPath = dialog.SelectedPath;
+                txbFolderName.Text = selectedFolderPath;
+                LoadFolder(selectedFolderPath);
+            }
         }
 
         public void LoadFolder(string folderPath)
@@ -269,12 +270,12 @@ namespace SpeechPhoto_WPF
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show($"Error opening image viewer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    System.Windows.MessageBox.Show($"Error opening image viewer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             else
             {
-                MessageBox.Show("Please select a folder before viewing images.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                System.Windows.MessageBox.Show("Please select a folder before viewing images.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }
