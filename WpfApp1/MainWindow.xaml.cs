@@ -7,6 +7,9 @@ using System.Drawing;
 using System.Windows.Media.Imaging;
 using System.Drawing.Imaging;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
+using WinForms = System.Windows.Forms;
+using Path = System.IO.Path;
 
 namespace SpeechPhoto_WPF
 {
@@ -16,18 +19,31 @@ namespace SpeechPhoto_WPF
         private FilterInfoCollection videoDevices;
         private VideoCaptureDevice videoSource;
         private Bitmap capturedBitmap;
+        private ObservableCollection<ImageViewModel> imageList;
+        private string selectedFolderPath;
 
         public MainWindow()
         {
-            InitializeSpeechRecognizer();
+            InitializeSpeechRecognizerAsync();
             InitializeWebcam();
+            imageList = new ObservableCollection<ImageViewModel>();
+            imageListView.ItemsSource = imageList;
         }
 
-        private void InitializeSpeechRecognizer()
+        private async Task InitializeSpeechRecognizerAsync()
         {
             var speechConfig = SpeechConfig.FromSubscription("2583945cfeae48e5bf5411b7debeb01d", "southeastasia");
             recognizer = new SpeechRecognizer(speechConfig);
             recognizer.Recognized += Recognizer_Recognized;
+
+            try
+            {
+                await recognizer.StartContinuousRecognitionAsync();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private async void Recognizer_Recognized(object sender, SpeechRecognitionEventArgs e)
@@ -69,43 +85,43 @@ namespace SpeechPhoto_WPF
 
             //ShowCapturedPhotoWindow(tempFilePath);
 
-            string directoryPath = @"F:\CapturedPhotos"; // Change this to your desired directory path
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
+            //string directoryPath = @"F:\CapturedPhotos"; // Change this to your desired directory path
+            //if (!Directory.Exists(directoryPath))
+            //{
+            //    Directory.CreateDirectory(directoryPath);
+            //}
 
-            string fileName = $"CapturedPhoto_{DateTime.Now:yyyyMMddHHmmss}.png";
+            //string fileName = $"CapturedPhoto_{DateTime.Now:yyyyMMddHHmmss}.png";
 
-            string filePath = Path.Combine(directoryPath, fileName);
-            frame.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
+            //string filePath = Path.Combine(directoryPath, fileName);
+            //frame.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
 
-            MessageBox.Show($"Photo saved to {filePath}");
+            //MessageBox.Show($"Photo saved to {filePath}");
         }
 
-        private async void StartRecognitionButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                await recognizer.StartContinuousRecognitionAsync();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //private async void StartRecognitionButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        await recognizer.StartContinuousRecognitionAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
-        private async void StopRecognitionButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                await recognizer.StopContinuousRecognitionAsync();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+        //private async void StopRecognitionButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        await recognizer.StopContinuousRecognitionAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
 
         private void InitializeWebcam()
         {
@@ -179,5 +195,87 @@ namespace SpeechPhoto_WPF
         //    }
         //}
 
+        private void imageListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (imageListView.SelectedItem != null)
+            {
+                ImageViewModel selectedImage = (ImageViewModel)imageListView.SelectedItem;
+                ShowImageViewer(selectedImage);
+
+            }
+        }
+
+        private void btnBrowseFile_Click(object sender, RoutedEventArgs e)
+        {
+            //WinForms.FolderBrowserDialog dialog = new WinForms.FolderBrowserDialog();
+            //dialog.InitialDirectory = "";
+            //WinForms.DialogResult result = dialog.ShowDialog();
+
+            //if (result == WinForms.DialogResult.OK)
+            //{
+            //    selectedFolderPath = dialog.SelectedPath;
+            //    txbFolderName.Text = selectedFolderPath;
+            //    LoadFolder(selectedFolderPath);
+            //}
+        }
+
+        public void LoadFolder(string folderPath)
+        {
+            imageList.Clear(); // Clear the ObservableCollection bound to imageListView
+            LoadDirectory(folderPath);
+        }
+
+        private void LoadDirectory(string path)
+        {
+            var directoryInfo = new DirectoryInfo(path);
+
+            foreach (var subDirectory in directoryInfo.GetDirectories())
+            {
+                AddImageToList(subDirectory.FullName);
+            }
+
+            foreach (var file in directoryInfo.GetFiles())
+            {
+                AddImageToList(file.FullName);
+            }
+        }
+
+        private void AddImageToList(string imagePath)
+        {
+            // Load the image and add it to the ObservableCollection
+            try
+            {
+                BitmapImage image = new BitmapImage(new Uri(imagePath));
+                string imageName = Path.GetFileName(imagePath);
+
+                imageList.Add(new ImageViewModel { Thumbnail = image, Name = imageName });
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., log it, show a message, skip the problematic image)
+                Console.WriteLine($"Error loading image: {ex.Message}");
+            }
+        }
+
+        private void ShowImageViewer(ImageViewModel selectedImage)
+        {
+            if (!string.IsNullOrEmpty(selectedFolderPath))
+            {
+                try
+                {
+                    string imagePath = Path.Combine(selectedFolderPath, selectedImage.Name);
+                    CapturedPhotoWindow viewerWindow = new CapturedPhotoWindow(imageList, selectedFolderPath, imagePath);
+                    viewerWindow.ShowDialog();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error opening image viewer: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a folder before viewing images.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
     }
 }

@@ -58,10 +58,6 @@
               "target": "Package",
               "version": "[2.2.5, )"
             },
-            "CloudinaryDotNet": {
-              "target": "Package",
-              "version": "[1.26.2, )"
-            },
             "GMap.NET.Core": {
               "target": "Package",
               "version": "[2.1.7, )"

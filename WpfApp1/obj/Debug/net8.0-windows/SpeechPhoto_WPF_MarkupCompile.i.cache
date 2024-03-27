@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-D:\Unity\ProjectPRN\PRN221_SpeechPhoto\WpfApp1\obj\Debug\net8.0-windows\
+F:\PRN221\PRN221_SpeechPhoto\WpfApp1\obj\Debug\net8.0-windows\
 SpeechPhoto_WPF
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-D:\Unity\ProjectPRN\PRN221_SpeechPhoto\WpfApp1\App.xaml
+F:\PRN221\PRN221_SpeechPhoto\WpfApp1\App.xaml
 3178281014
 
-9-29235103
-2191815961518
+10329406176
+220-745204328
 CapturedPhotoWindow.xaml;GGMap.xaml;MainWindow.xaml;
 
-True
+False
 

@@ -1,26 +1,36 @@
-﻿using System;
+﻿using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+using System;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Security.Principal;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 
 namespace SpeechPhoto_WPF
 {
     public partial class CapturedPhotoWindow : Window
     {
-        private string tempFilePath;
+        private string imagePath;
+        private ObservableCollection<ImageViewModel> imageList;
+        private string selectedFolderPath;
+        private ListView imageListView;
 
-        public CapturedPhotoWindow(string tempFilePath)
+        public CapturedPhotoWindow(ObservableCollection<ImageViewModel> imageList, string selectedFolderPath, string imagePath)
         {
             InitializeComponent();
-            this.tempFilePath = tempFilePath;
+            this.selectedFolderPath = selectedFolderPath;
+            this.imageList = imageList;
+            this.imagePath = imagePath;
             DisplayCapturedPhoto();
         }
 
         private void DisplayCapturedPhoto()
         {
-            BitmapImage bitmapImage = new BitmapImage(new Uri(tempFilePath));
+            BitmapImage bitmapImage = new BitmapImage(new Uri(imagePath));
             capturedImageView.Source = bitmapImage;
         }
 
@@ -61,7 +71,34 @@ namespace SpeechPhoto_WPF
 
         private void UploadButton_Click(object sender, RoutedEventArgs e)
         {
-            // Code to upload the image to cloud
+            try
+            {
+                Account cloudinaryAccount = new Account(
+                    "dltdfgtzt",
+                    "857332939335692",
+                    "bhTKRNb9hnxLVZfUB853aSAPW1o"
+                );
+
+                Cloudinary cloudinary = new Cloudinary(cloudinaryAccount);
+
+                ImageUploadParams uploadParams = new ImageUploadParams
+                {
+                    File = new FileDescription(imagePath),
+                    PublicId = $"image_{DateTime.Now:yyyyMMddHHmmssfff}_{Guid.NewGuid()}", // Set a unique public ID for the uploaded image
+                                                                                           // Additional parameters as needed (e.g., folder, tags, etc.)
+                };
+
+                ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
+
+                // Handle the upload result as needed
+                Console.WriteLine($"Image uploaded successfully. Public ID: {uploadResult.PublicId}");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Error uploading image to Cloudinary: {ex.Message}");
+            }
+
+            Close();
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
