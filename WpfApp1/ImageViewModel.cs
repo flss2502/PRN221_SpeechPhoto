@@ -11,5 +11,6 @@ namespace SpeechPhoto_WPF
     {
         public BitmapImage Thumbnail { get; set; }
         public string Name { get; set; }
+        public string Path { get; set; }
     }
 }

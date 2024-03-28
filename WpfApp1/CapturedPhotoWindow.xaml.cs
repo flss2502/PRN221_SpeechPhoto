@@ -17,22 +17,18 @@ namespace SpeechPhoto_WPF
 {
     public partial class CapturedPhotoWindow : Window
     {
-        private string imagePath;
-        private ObservableCollection<ImageViewModel> imageList;
-        private string selectedFolderPath;
+        private BitmapImage bitmapImage;
 
-        public CapturedPhotoWindow(ObservableCollection<ImageViewModel> imageList, string selectedFolderPath, string imagePath)
+        public CapturedPhotoWindow(Bitmap bitmapImage) 
         {
             InitializeComponent();
-            this.selectedFolderPath = selectedFolderPath;
-            this.imageList = imageList;
-            this.imagePath = imagePath;
-            DisplayCapturedPhoto();
+            this.bitmapImage = ConvertToBitmapImage(bitmapImage);
+            Dispatcher.BeginInvoke(new Action(() => DisplayCapturedPhoto()));
         }
 
         private void DisplayCapturedPhoto()
         {
-            BitmapImage bitmapImage = new BitmapImage(new Uri(imagePath));
+            // Chuyển đổi Bitmap sang BitmapImage để hiển thị trong control hình ảnh của WPF
             capturedImageView.Source = bitmapImage;
         }
 
@@ -68,10 +64,27 @@ namespace SpeechPhoto_WPF
 
         private void SaveCapturedBitmapToFile(string filePath)
         {
-            
+            try
+            {
+                PngBitmapEncoder encoder = new PngBitmapEncoder();
+
+                BitmapSource bitmapSource = (BitmapSource)capturedImageView.Source;
+
+                using (FileStream fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    encoder.Frames.Add(BitmapFrame.Create(bitmapSource));
+                    encoder.Save(fileStream);
+                }
+
+                System.Windows.MessageBox.Show($"Photo saved to {filePath}");
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Error saving photo: {ex.Message}");
+            }
         }
 
-        private void UploadButton_Click(object sender, RoutedEventArgs e)
+        private async void UploadButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -83,27 +96,34 @@ namespace SpeechPhoto_WPF
 
                 Cloudinary cloudinary = new Cloudinary(cloudinaryAccount);
 
+                byte[] imageBytes;
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    PngBitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(bitmapImage));
+                    encoder.Save(memoryStream);
+                    imageBytes = memoryStream.ToArray();
+                }
+
+                string publicId = $"image_{DateTime.Now:yyyyMMddHHmmssfff}_{Guid.NewGuid()}";
+
                 ImageUploadParams uploadParams = new ImageUploadParams
                 {
-                    File = new FileDescription(imagePath),
-                    PublicId = $"image_{DateTime.Now:yyyyMMddHHmmssfff}_{Guid.NewGuid()}", // Set a unique public ID for the uploaded image
-                                                                                           // Additional parameters as needed (e.g., folder, tags, etc.)
+                    File = new FileDescription(publicId, new MemoryStream(imageBytes)), // Sử dụng MemoryStream chứa byte array của ảnh
+                    PublicId = publicId,
                 };
 
-                ImageUploadResult uploadResult = cloudinary.Upload(uploadParams);
-
-                // Handle the upload result as needed
-                Console.WriteLine($"Image uploaded successfully. Public ID: {uploadResult.PublicId}");
+                ImageUploadResult uploadResult = await cloudinary.UploadAsync(uploadParams);
+                System.Windows.MessageBox.Show($"Image uploaded successfully. Public ID: {uploadResult.PublicId}");
+                Close();
             }
             catch (Exception ex)
             {
                 System.Windows.MessageBox.Show($"Error uploading image to Cloudinary: {ex.Message}");
             }
-
-            Close();
         }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private void CloseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }

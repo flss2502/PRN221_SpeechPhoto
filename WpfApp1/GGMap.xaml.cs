@@ -1,5 +1,7 @@
 ﻿using GMap.NET;
 using GMap.NET.WindowsPresentation;
+using Newtonsoft.Json.Linq;
+using System.Net.Http;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
@@ -15,22 +17,69 @@ namespace SpeechPhoto_WPF
         {
             InitializeComponent();
         }
-        private void mapView_Loaded(object sender, RoutedEventArgs e)
+        private async void mapView_Loaded(object sender, RoutedEventArgs e)
         {
-            GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
-            // choose your provider here
-            mapView.MapProvider = GMap.NET.MapProviders.OpenStreetMapProvider.Instance;
-            mapView.MinZoom = 2;
-            mapView.MaxZoom = 17;
-            // whole world zoom
-            mapView.Zoom = 2;
-            // lets the map use the mousewheel to zoom
-            mapView.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
-            // lets the user drag the map
-            mapView.CanDragMap = true;
-            // lets the user drag the map with the left mouse button
-            mapView.DragButton = MouseButton.Left;
+            try
+            {
+                string apiKey = "b7774cc1e6cc457daa4bf1d296f5adcd";
+                string apiUrl = $"https://ipgeolocation.abstractapi.com/v1/?api_key={apiKey}&ip_address={await GetIPAddressAsync()}";
+
+                // Thiết lập cài đặt cho bản đồ
+                GMap.NET.GMaps.Instance.Mode = GMap.NET.AccessMode.ServerAndCache;
+                mapView.MapProvider = GMap.NET.MapProviders.OpenStreetMapProvider.Instance;
+                mapView.MinZoom = 2;
+                mapView.MaxZoom = 17;
+                mapView.Zoom = 2;
+                mapView.MouseWheelZoomType = GMap.NET.MouseWheelZoomType.MousePositionAndCenter;
+                mapView.CanDragMap = true;
+                mapView.DragButton = MouseButton.Left;
+
+                using (var client = new HttpClient())
+                {
+                    var response = await client.GetAsync(apiUrl);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var jsonString = await response.Content.ReadAsStringAsync();
+                        dynamic locationData = JObject.Parse(jsonString);
+
+                        double latitude = locationData.latitude;
+                        double longitude = locationData.longitude;
+
+                        mapView.Position = new PointLatLng(latitude, longitude);
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Failed to retrieve location data from API.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show($"Error: {ex.Message}");
+            }
         }
+
+
+        private async Task<string> GetIPAddressAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync("https://api.ipify.org?format=json");
+
+                if (response.IsSuccessStatusCode)
+                {
+                    var jsonString = await response.Content.ReadAsStringAsync();
+                    dynamic ipData = JObject.Parse(jsonString);
+                    return ipData.ip;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+        }
+
         private void MoveButton_Click(object sender, RoutedEventArgs e)
         {
             double latitude, longitude;
@@ -43,11 +92,28 @@ namespace SpeechPhoto_WPF
                 System.Windows.MessageBox.Show("Invalid Latitude or Longitude!");
             }
         }
+        private async Task<string> GetLocalIPAddressAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync("https://api.ipify.org");
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    return "Failed to retrieve local IP address.";
+                }
+            }
+        }
 
         private async void MoveToAPILocation_Click(object sender, RoutedEventArgs e)
         {
+            string ipAddress = await GetLocalIPAddressAsync();
+
             string apiKey = "b7774cc1e6cc457daa4bf1d296f5adcd";
-            string apiUrl = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + apiKey + "&ip_address=113.23.109.239";
+            string apiUrl = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + apiKey + "&ip_address=" + ipAddress;
 
             try
             {

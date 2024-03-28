@@ -13,6 +13,9 @@
     <Compile Update="GGMap.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Image.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="MainWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="GGMap.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Image.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

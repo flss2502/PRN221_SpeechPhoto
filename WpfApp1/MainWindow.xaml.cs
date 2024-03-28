@@ -15,6 +15,7 @@ using System.Net;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using Weather;
+using static SpeechPhoto_WPF.Image;
 
 namespace SpeechPhoto_WPF
 {
@@ -38,22 +39,25 @@ namespace SpeechPhoto_WPF
             imageList = new ObservableCollection<ImageViewModel>();
             imageListView.ItemsSource = imageList;
             GetWeatherApi();
+            StartRecognition();
+
+
+            foreach (Window window in System.Windows.Application.Current.Windows)
+            {
+                if (window is Image imageWindow)
+                {
+                    imageWindow.ImageDeleted += ImageWindow_ImageDeleted;
+                }
+            }
         }
 
-        private async Task InitializeSpeechRecognizerAsync()
+        private Task InitializeSpeechRecognizerAsync()
         {
             var speechConfig = SpeechConfig.FromSubscription("2583945cfeae48e5bf5411b7debeb01d", "southeastasia");
             recognizer = new SpeechRecognizer(speechConfig);
             recognizer.Recognized += Recognizer_Recognized;
 
-            try
-            {
-                await recognizer.StartContinuousRecognitionAsync();
-            }
-            catch (Exception ex)
-            {
-                System.Windows.MessageBox.Show(ex.Message);
-            }
+            return Task.CompletedTask;
         }
 
         private async void Recognizer_Recognized(object sender, SpeechRecognitionEventArgs e)
@@ -68,6 +72,18 @@ namespace SpeechPhoto_WPF
                     // Call your photo capture function here
                     await TakePhoto();
                 }
+            }
+        }
+
+        private async void StartRecognition()
+        {
+            try
+            {
+                await recognizer.StartContinuousRecognitionAsync();
+            }
+            catch (Exception ex)
+            {
+                System.Windows.MessageBox.Show(ex.Message);
             }
         }
 
@@ -90,48 +106,12 @@ namespace SpeechPhoto_WPF
                 await Task.Delay(100);
             }
 
-            //string tempFilePath = Path.GetTempFileName();
-            //frame.Save(tempFilePath, ImageFormat.Png);
-
-            //ShowCapturedPhotoWindow(tempFilePath);
-
-            //string directoryPath = @"F:\CapturedPhotos"; // Change this to your desired directory path
-            //if (!Directory.Exists(directoryPath))
-            //{
-            //    Directory.CreateDirectory(directoryPath);
-            //}
-
-            //string fileName = $"CapturedPhoto_{DateTime.Now:yyyyMMddHHmmss}.png";
-
-            //string filePath = Path.Combine(directoryPath, fileName);
-            //frame.Save(filePath, System.Drawing.Imaging.ImageFormat.Png);
-
-            //MessageBox.Show($"Photo saved to {filePath}");
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                CapturedPhotoWindow capturedPhotoWindow = new CapturedPhotoWindow(frame);
+                capturedPhotoWindow.ShowDialog();
+            }));
         }
-
-        //private async void StartRecognitionButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        await recognizer.StartContinuousRecognitionAsync();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
-
-        //private async void StopRecognitionButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        await recognizer.StopContinuousRecognitionAsync();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
 
         private void InitializeWebcam()
         {
@@ -139,7 +119,7 @@ namespace SpeechPhoto_WPF
 
             if (videoDevices.Count > 0)
             {
-                videoSource = new VideoCaptureDevice(videoDevices[1].MonikerString);
+                videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
                 videoSource.NewFrame += VideoSource_NewFrame;
                 videoSource.Start();
             }
@@ -154,6 +134,8 @@ namespace SpeechPhoto_WPF
             capturedBitmap = (Bitmap)eventArgs.Frame.Clone();
             BitmapImage bitmapImage = ConvertToBitmapImage(capturedBitmap);
             Dispatcher.Invoke(() => webcamImage.Source = bitmapImage);
+
+
         }
 
 
@@ -174,36 +156,6 @@ namespace SpeechPhoto_WPF
                 return bitmapImage;
             }
         }
-
-        //private void ShowCapturedPhotoWindow(string tempFilePath)
-        //{
-        //    CapturedPhotoWindow capturedPhotoWindow = new CapturedPhotoWindow(tempFilePath);
-        //    capturedPhotoWindow.ShowDialog();
-        //}
-
-        //private async Task UpdateWeatherOverlay()
-        //{
-        //    if (capturedBitmap == null)
-        //        return;
-
-        //    WeatherService weatherService = new WeatherService();
-        //    string city = "YOUR_CITY"; // Thay YOUR_CITY bằng tên thành phố của bạn
-        //    try
-        //    {
-        //        string weatherInfo = await weatherService.GetWeatherAsync(city);
-        //        using (Graphics graphics = Graphics.FromImage(capturedBitmap))
-        //        {
-        //            // Vẽ thông tin thời tiết lên ảnh
-        //            graphics.DrawString(weatherInfo, new Font("Arial", 12), Brushes.White, new PointF(10, 10));
-        //        }
-        //        BitmapImage bitmapImage = ConvertToBitmapImage(capturedBitmap);
-        //        webcamImage.Source = bitmapImage;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine(ex.Message);
-        //    }
-        //}
 
         private void imageListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -231,7 +183,7 @@ namespace SpeechPhoto_WPF
 
         public void LoadFolder(string folderPath)
         {
-            imageList.Clear(); // Clear the ObservableCollection bound to imageListView
+            imageList.Clear();
             LoadDirectory(folderPath);
         }
 
@@ -252,7 +204,6 @@ namespace SpeechPhoto_WPF
 
         private void AddImageToList(string imagePath)
         {
-            // Load the image and add it to the ObservableCollection
             try
             {
                 BitmapImage image = new BitmapImage(new Uri(imagePath));
@@ -262,7 +213,6 @@ namespace SpeechPhoto_WPF
             }
             catch (Exception ex)
             {
-                // Handle the exception (e.g., log it, show a message, skip the problematic image)
                 Console.WriteLine($"Error loading image: {ex.Message}");
             }
         }
@@ -274,7 +224,7 @@ namespace SpeechPhoto_WPF
                 try
                 {
                     string imagePath = Path.Combine(selectedFolderPath, selectedImage.Name);
-                    CapturedPhotoWindow viewerWindow = new CapturedPhotoWindow(imageList, selectedFolderPath, imagePath);
+                    Image viewerWindow = new Image(imageList, selectedFolderPath, imagePath);
                     viewerWindow.ShowDialog();
                 }
                 catch (Exception ex)
@@ -288,16 +238,34 @@ namespace SpeechPhoto_WPF
             }
         }
 
-        private void location_Click(object sender, RoutedEventArgs e)
+        private void locate_Click(object sender, RoutedEventArgs e)
         {
             GGMap ggMapWindow = new GGMap();
             ggMapWindow.Show();
         }
 
+        private async Task<string> GetLocalIPAddressAsync()
+        {
+            using (var client = new HttpClient())
+            {
+                var response = await client.GetAsync("https://api.ipify.org");
+                if (response.IsSuccessStatusCode)
+                {
+                    return await response.Content.ReadAsStringAsync();
+                }
+                else
+                {
+                    return "Failed to retrieve local IP address.";
+                }
+            }
+        }
+
         private async Task<string> GetLocationFromApiAsync()
         {
+            string ipAddress = await GetLocalIPAddressAsync();
+
             string apiKey = "b7774cc1e6cc457daa4bf1d296f5adcd";
-            string apiUrl = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + apiKey + "&ip_address=113.23.109.239";
+            string apiUrl = "https://ipgeolocation.abstractapi.com/v1/?api_key=" + apiKey + "&ip_address=" + ipAddress;
 
             try
             {
@@ -347,22 +315,45 @@ namespace SpeechPhoto_WPF
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            GGMap gGMap = new GGMap();
-            gGMap.Show();
-        }
-
-        private void Button_Click2(object sender, RoutedEventArgs e)
+        private void weather_Click(object sender, RoutedEventArgs e)
         {
             Weather weather = new Weather();
             weather.Show();
         }
-        private void Button_Click3(object sender, RoutedEventArgs e)
+
+        private void ImageWindow_ImageDeleted(object sender, Image.ImageEventArgs e)
         {
-            WinForms.MessageBox.Show("Test");
+            string deletedImagePath = e.ImagePath;
+            // Xóa ảnh khỏi danh sách
+            DeleteImage(deletedImagePath);
         }
 
+        void DeleteImage(string imagePath)
+        {
+            
+            if (File.Exists(imagePath))
+            {
+                try
+                {
+                    File.Delete(imagePath);
+                    System.Windows.MessageBox.Show("Image deleted successfully.", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                    LoadFolder(selectedFolderPath);
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.MessageBox.Show($"Error deleting image: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Error: Image file not found.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ListFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 
 }
